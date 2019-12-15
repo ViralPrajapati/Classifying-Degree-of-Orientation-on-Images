@@ -7,7 +7,7 @@ import statistics
 import numpy as np
 import random
 import pickle
-
+import neuralNet
 
 class Solver:
 
@@ -29,9 +29,10 @@ class Solver:
                 pickle.dump(result, out)
 
             return "null"
-        if model == "nnet":
-            # Write to model_params
-            return "null"
+        if model == "nnet" or model == "best":
+            netWeight = neuralNet.train(data)
+            pickle.dump(netWeight, open(model_filename,"wb"))
+            print("Model Ready!")
 
         model_params.close()
 
@@ -65,9 +66,10 @@ class Solver:
         return (test_image[0], str(result))
 
 
-    def nnet(self, test_image, model_params):
-
-        return "orientation"
+    def nnet(self, test_data, model_params):
+        netWeight = pickle.load(open(model_params, "rb"))
+        orientation = neuralNet.test(netWeight, test_data)
+        return orientation
 
 
     # Solve function is called by orient.py for each image in the test set
@@ -78,7 +80,7 @@ class Solver:
             return self.nearest(test_image, model_params)
         if model == "tree":
             return self.tree(test_image, model_params)
-        if model == "nnet":
+        if model == "nnet" or model == "best":
             return self.nnet(test_image, model_params)
 
         else:

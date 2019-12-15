@@ -25,7 +25,8 @@ data most effectively -- i.e. that minimizes the uncertainty about which of the 
 present in the test image. These attributes are selected from a set, which in this implementation is the full set of 
 pairwise pixel comparisons. The criterion is whether the intensity of pixel A greater than pixel B. Rather than choosing 
 from the full 192^2 possible pixel comparisons, we take a random subsample of N attributes (or pixel-pixel comparisons),and 
-this number N determines the resulting depth of the tree. We found the most effective number N to be roughly 11 attributes.
+this number N determines the resulting depth of the tree. We found the most effective number N to be roughly 11 attributes. 
+When we tested on really small trees, we found the most predictive attributes compared more distant points.
 
 We found that this algorithm was very sensitive to overfitting, and that shallower trees preformed much better than
 deep trees. Currently the tree depth is limited to 11 attributes (i.e. binary decision tree nodes). This setting results 

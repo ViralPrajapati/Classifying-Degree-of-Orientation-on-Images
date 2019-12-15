@@ -14,7 +14,9 @@ def read_data(fname, model_type): # Read differently for different versions of m
         for line in file:
             data = tuple([w.lower() for w in line.split()])
             exemplars += [[data[0], data[1], data[2:]], ] #(image_id , orientation, (pixel data, pixel data ... ))
-
+    elif model_type == "tree":
+        with open(fname, "rb") as input:
+            return pickle.load(input)
     return exemplars # Exemplars is list of tuples: [(image_id, orientation, (pixel data, pixel data ...)), ... ]
 
 

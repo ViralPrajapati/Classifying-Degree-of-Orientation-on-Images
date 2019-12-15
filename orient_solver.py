@@ -150,7 +150,7 @@ def id3(data, attributes):
 
     node = TreeNode(data=data)
 
-    # check if any of the classes are a perfect math
+    # check if any of the classes are a perfect match
     for c in classes:
         if all(d[1] == c for d in data):
             node.terminal = c
@@ -187,7 +187,6 @@ def id3(data, attributes):
     # split using the best (i.e. highest infogain) attribute
     S1, S2 = split_on_attr(data, best)
 
-
     for i, v in enumerate([S1, S2]):
         if len(v) == 0:
             dist = class_dist(S1+S2)
@@ -195,15 +194,9 @@ def id3(data, attributes):
             child = TreeNode()
             child.terminal = max_class
 
-            # if i == 0:
-            #     node.left_child = child
-            # else:
-            #     node.right_child = child
-
             node.left_child = child
             node.right_child = child
 
-            # node.children.append(child)
             break
         else:
             child = id3(v, remaining_attrs)
@@ -211,7 +204,6 @@ def id3(data, attributes):
                 node.left_child = child
             else:
                 node.right_child = child
-            # node.children.append(child)
 
     return node
 

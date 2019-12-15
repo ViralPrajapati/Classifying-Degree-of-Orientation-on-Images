@@ -28,7 +28,8 @@ from the full 192^2 possible pixel comparisons, we take a random subsample of N 
 this number N determines the resulting depth of the tree. We found the most effective number N to be roughly 11 attributes.
 
 We found that this algorithm was very sensitive to overfitting, and that shallower trees preformed much better than
-deep trees. Currently the tree depth is limited to 11 attributes (i.e. binary decision tree nodes).
+deep trees. Currently the tree depth is limited to 11 attributes (i.e. binary decision tree nodes). This setting results 
+in classification accuracy which ranges from 55-69% on the test set.
 
 We tried a few image processing techniques to aid classification performance, such as reducing the images to a single 
 color value (averaging over the 3 color pixel values). This reduced the image space down to 64 states, rather than 192. 

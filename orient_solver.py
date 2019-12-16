@@ -68,8 +68,8 @@ class Solver:
 
     def nnet(self, test_data, model_params):
         netWeight = pickle.load(open(model_params, "rb"))
-        orientation = neuralNet.test(netWeight, test_data)
-        return orientation
+        orientation, accuracy = neuralNet.test(netWeight, test_data)
+        return orientation, accuracy
 
 
     # Solve function is called by orient.py for each image in the test set

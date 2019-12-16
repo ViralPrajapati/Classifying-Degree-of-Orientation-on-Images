@@ -153,7 +153,7 @@ class Model:
         yEnc = self.oneHotEncoding(y_data)
                 
         xBatches = np.array_split(X_data, self.noBatches)
-        yBatches = np.array_split(yEnc, self.noBatches)
+        yBatches = np.array_split(yEnc, self.noBatches)     
         
         for i in range(self.epochs):
             
@@ -169,6 +169,10 @@ class Model:
                 self.w4 -= (self.lrate * grad4)
             err.append(np.mean(epochError))
         return self
+    
+    def score(self, X, y):
+        predicted = self.predict(X)
+        return np.sum(y == predicted, axis=0) / float(X.shape[0])
 
 def train(data):
     pId = []
@@ -207,6 +211,8 @@ def test(nn, test_data):
     
     X_test = np.array(testData, dtype = 'float64')
     X_test_normalized = X_test / 224
+    y_test = np.array(label, dtype = 'float64') / 90
     yPred = nn.softmaxValues(X_test_normalized)
     pred = np.argmax(yPred, axis=1)
-    return (pId, pred * 90)
+    accuracy = nn.score(X_test_normalized, y_test)
+    return (pId, pred * 90), accuracy

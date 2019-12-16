@@ -62,9 +62,10 @@ if test_or_train == "test":
     file_output = open("output.txt", "w+")
     
     if model_type == "nnet" or model_type == "best":
-        output = solver.solve(test_data, model_type, model_filename)
+        output, accuracy = solver.solve(test_data, model_type, model_filename)
         for i in range(len(output[0])):
             file_output.write(str(output[0][i]) + " " + str(output[1][i]) + '\n')
+        print("model accuracy: ", accuracy)
     else:
         model_params = read_data(model_filename, model_type)
         accuracy_count = 0

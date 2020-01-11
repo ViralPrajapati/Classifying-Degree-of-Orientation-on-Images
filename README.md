@@ -48,6 +48,6 @@ For this model we are getting 78-80% accuracy, thus we can say that neural net i
 
 The error graph for this model is attached with the files.
 
-Direction to execute : ./orient.py [test or train] train_file.txt model_file.txt [model]
-Where, model = knn, nnet or tree
+## Direction to execute : ./orient.py [test or train] train_file.txt model_file.txt [model]
+## Where, model = knn, nnet or tree
 

@@ -1,9 +1,3 @@
-# vkprajap-ngrover-aamatuni-a4
-a4 created for vkprajap-ngrover-aamatuni
-
-Direction to execute : ./orient.py [test or train] train_file.txt model_file.txt [model]
-Where, model = knn, nnet or tree
-
 # K Nearest Neighbors
 
 This algorithm is meant to loop through the training data for each test image, calculate the “distance” between each training image and the test image, select the “k” nearest neighbors, and finally return the classification from the nearest neighbors with the highest probability. 
@@ -53,3 +47,7 @@ In this algorithm we use neural nets which are multi-layer network of neurons to
 For this model we are getting 78-80% accuracy, thus we can say that neural net is the best model. 
 
 The error graph for this model is attached with the files.
+
+Direction to execute : ./orient.py [test or train] train_file.txt model_file.txt [model]
+Where, model = knn, nnet or tree
+
